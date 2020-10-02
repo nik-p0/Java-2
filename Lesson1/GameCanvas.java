@@ -1,4 +1,4 @@
-package ru.geekbrains.java_two.lesson_a.online;
+package Lesson1;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +16,14 @@ public class GameCanvas extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {  // while (true) {
         super.paintComponent(g);
+
         long currentTime = System.nanoTime();
         float deltaTime = (currentTime - lastFrameTime) * 0.000000001f;
         lastFrameTime = currentTime;
         gameController.onDrawFrame(this, g, deltaTime);
+        if(currentTime % 15 == 0){
+            setBackground(Background.backgroundColor());
+        }
         try {
             Thread.sleep(16);
         } catch (InterruptedException e) {
